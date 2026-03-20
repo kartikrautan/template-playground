@@ -51,9 +51,11 @@ interface AppState {
   isEditorsVisible: boolean;
   isPreviewVisible: boolean;
   isProblemPanelVisible: boolean;
+  isTransactionPanelOpen: boolean;
   setEditorsVisible: (value: boolean) => void;
   setPreviewVisible: (value: boolean) => void;
   setProblemPanelVisible: (value: boolean) => void;
+  setTransactionPanelOpen: (value: boolean) => void;
   startTour: () => void;
   isModelCollapsed: boolean;
   isTemplateCollapsed: boolean;
@@ -129,6 +131,7 @@ const getInitialPanelState = () => {
     isPreviewVisible: true,
     isProblemPanelVisible: false,
     isAIChatOpen: false,
+    isTransactionPanelOpen: false,
   };
   if (typeof window !== 'undefined') {
     try {
@@ -147,6 +150,7 @@ const savePanelState = (state: Partial<AppState>) => {
       isPreviewVisible: state.isPreviewVisible,
       isProblemPanelVisible: state.isProblemPanelVisible,
       isAIChatOpen: state.isAIChatOpen,
+      isTransactionPanelOpen: state.isTransactionPanelOpen,
     };
     localStorage.setItem('ui-panels', JSON.stringify(panels));
   }
@@ -193,6 +197,7 @@ const useAppStore = create<AppState>()(
         isEditorsVisible: initialPanels.isEditorsVisible,
         isPreviewVisible: initialPanels.isPreviewVisible,
         isProblemPanelVisible: initialPanels.isProblemPanelVisible,
+        isTransactionPanelOpen: initialPanels.isTransactionPanelOpen,
         isModelCollapsed: false,
         isTemplateCollapsed: false,
         isDataCollapsed: false,
@@ -228,6 +233,10 @@ const useAppStore = create<AppState>()(
         setProblemPanelVisible: (value) => {
           set({ isProblemPanelVisible: value });
           savePanelState({ ...get(), isProblemPanelVisible: value }); // Save change
+        },
+        setTransactionPanelOpen: (value: boolean) => {
+          set({ isTransactionPanelOpen: value });
+          savePanelState({ ...get(), isTransactionPanelOpen: value });
         },
         init: async () => {
           const params = new URLSearchParams(window.location.search);

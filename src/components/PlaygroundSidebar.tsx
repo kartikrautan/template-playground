@@ -3,6 +3,7 @@ import { IoCodeSlash } from "react-icons/io5";
 import { VscOutput } from "react-icons/vsc";
 import { FiTerminal, FiShare2, FiSettings } from "react-icons/fi";
 import { FaCirclePlay } from "react-icons/fa6";
+import { VscRunAll } from "react-icons/vsc";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import useAppStore from "../store/store";
 import { message, Tooltip } from "antd";
@@ -17,10 +18,12 @@ const PlaygroundSidebar = () => {
     isPreviewVisible,
     isProblemPanelVisible,
     isAIChatOpen,
+    isTransactionPanelOpen,
     setEditorsVisible,
     setPreviewVisible,
     setProblemPanelVisible,
     setAIChatOpen,
+    setTransactionPanelOpen,
     generateShareableLink,
     setSettingsOpen,
   } = useAppStore((state) => ({
@@ -28,10 +31,12 @@ const PlaygroundSidebar = () => {
     isPreviewVisible: state.isPreviewVisible,
     isProblemPanelVisible: state.isProblemPanelVisible,
     isAIChatOpen: state.isAIChatOpen,
+    isTransactionPanelOpen: state.isTransactionPanelOpen,
     setEditorsVisible: state.setEditorsVisible,
     setPreviewVisible: state.setPreviewVisible,
     setProblemPanelVisible: state.setProblemPanelVisible,
     setAIChatOpen: state.setAIChatOpen,
+    setTransactionPanelOpen: state.setTransactionPanelOpen,
     generateShareableLink: state.generateShareableLink,
     setSettingsOpen: state.setSettingsOpen,
   }));
@@ -122,6 +127,12 @@ const PlaygroundSidebar = () => {
       ),
       onClick: () => setAIChatOpen(!isAIChatOpen),
       active: isAIChatOpen
+    },
+    {
+      title: "Transaction",
+      icon: VscRunAll,
+      onClick: () => setTransactionPanelOpen(!isTransactionPanelOpen),
+      active: isTransactionPanelOpen
     },
     { 
       title: "Fullscreen", 

@@ -5,6 +5,7 @@ import TemplateMarkdown from "../editors/editorsContainer/TemplateMarkdown";
 import useAppStore from "../store/store";
 import { AIChatPanel } from "../components/AIChatPanel";
 import ProblemPanel from "../components/ProblemPanel";
+import TransactionExecutionPanel from "../components/TransactionExecutionPanel";
 import SampleDropdown from "../components/SampleDropdown";
 import { useState, useRef } from "react";
 import { TemplateMarkdownToolbar } from "../components/TemplateMarkdownToolbar";
@@ -63,6 +64,7 @@ const MainContainer = () => {
     isEditorsVisible,
     isPreviewVisible,
     isProblemPanelVisible,
+    isTransactionPanelOpen,
     isModelCollapsed,
     isTemplateCollapsed,
     isDataCollapsed,
@@ -73,6 +75,7 @@ const MainContainer = () => {
     isEditorsVisible: state.isEditorsVisible,
     isPreviewVisible: state.isPreviewVisible,
     isProblemPanelVisible: state.isProblemPanelVisible,
+    isTransactionPanelOpen: state.isTransactionPanelOpen,
     isModelCollapsed: state.isModelCollapsed,
     isTemplateCollapsed: state.isTemplateCollapsed,
     isDataCollapsed: state.isDataCollapsed,
@@ -242,6 +245,14 @@ const MainContainer = () => {
                   </div>
                 </div>
               </div>
+            </Panel>
+            <PanelResizeHandle className="main-container-panel-resize-handle-horizontal" />
+          </>
+        )}
+        {isTransactionPanelOpen && (
+          <>
+            <Panel defaultSize={30} minSize={20}>
+              <TransactionExecutionPanel />
             </Panel>
             <PanelResizeHandle className="main-container-panel-resize-handle-horizontal" />
           </>
