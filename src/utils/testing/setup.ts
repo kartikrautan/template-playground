@@ -8,6 +8,19 @@ afterEach(() => {
   cleanup();
 });
 
+// Mock monaco-editor for tests
+vi.mock("monaco-editor", () => ({
+  editor: {
+    create: vi.fn(),
+    defineTheme: vi.fn(),
+  },
+  Range: vi.fn(),
+  languages: {
+    register: vi.fn(),
+    setMonarchTokensProvider: vi.fn(),
+  },
+}));
+
 // Mock getComputedStyle for Ant Design components that use scroll locking
 // jsdom doesn't fully support getComputedStyle with pseudo-elements
 // rc-util's getScrollBarSize calls .match() on style properties
