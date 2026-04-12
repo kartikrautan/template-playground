@@ -9,6 +9,7 @@ import LearnContent from "./components/Content";
 import PlaygroundSidebar from "./components/PlaygroundSidebar";
 import "./styles/App.css";
 import AIConfigPopup from "./components/AIConfigPopup";
+import { colors } from './utils/theme';
 
 const LearnNow = lazy(() => import("./pages/LearnNow"));
 const MainContainer = lazy(() => import("./pages/MainContainer"));
@@ -162,7 +163,7 @@ const App = () => {
 const Spinner = () => (
   <div className="app-spinner-container">
     <Spin
-      indicator={<LoadingOutlined style={{ fontSize: 42, color: "#19c6c7" }} spin />}
+      indicator={<LoadingOutlined style={{ fontSize: 42, color: colors.primary }} spin />}
     />
   </div>
 );
