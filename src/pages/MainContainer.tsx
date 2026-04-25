@@ -100,8 +100,6 @@ const MainContainer = () => {
     toggleDataCollapse: state.toggleDataCollapse,
   }));
 
-  const [, setLoading] = useState(true);
-
   // Calculate dynamic panel sizes based on collapse states
   const collapsedCount = [isModelCollapsed, isTemplateCollapsed, isDataCollapsed].filter(Boolean).length;
   const expandedCount = 3 - collapsedCount;
