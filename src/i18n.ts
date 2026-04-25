@@ -6,7 +6,7 @@ import enTranslation from './locales/en/translation.json';
 import frTranslation from './locales/fr/translation.json';
 import esTranslation from './locales/es/translation.json';
 
-void i18n
+i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
@@ -25,6 +25,8 @@ void i18n
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
+  }).catch((err) => {
+    console.error("I18N INIT ERROR:", err);
   });
 
 export default i18n;
