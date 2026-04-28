@@ -18,6 +18,9 @@ i18n
     supportedLngs: ['en', 'fr', 'es'],
     load: 'languageOnly',
     fallbackLng: 'en',
+    // Initialize synchronously to prevent components from suspending
+    // while i18n resolves — avoids app spinner hanging in E2E tests.
+    initImmediate: false,
     interpolation: {
       escapeValue: false,
     },
